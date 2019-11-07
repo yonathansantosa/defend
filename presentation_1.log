@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.6.19)  3 NOV 2019 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.6.19)  7 NOV 2019 16:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -829,7 +829,7 @@ File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/mat
 LaTeX Font Warning: Font shape `OT1/cmss/bx/sc' undefined
 (Font)              using `OT1/cmss/bx/n' instead on input line 155.
 
-<images/mimick.pdf, id=73, 726.79526pt x 529.01637pt>
+<images/mimick.pdf, id=81, 726.79526pt x 529.01637pt>
 File: images/mimick.pdf Graphic file (type pdf)
 <use images/mimick.pdf>
 Package pdftex.def Info: images/mimick.pdf  used on input line 155.
@@ -855,10 +855,10 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
 ] [7
 
 ]
-<images/model_batchnorm.pdf, id=112, 449.76028pt x 242.8272pt>
+<images/model_batchnorm.pdf, id=120, 449.76028pt x 242.8272pt>
 File: images/model_batchnorm.pdf Graphic file (type pdf)
 <use images/model_batchnorm.pdf>
-Package pdftex.def Info: images/model_batchnorm.pdf  used on input line 233.
+Package pdftex.def Info: images/model_batchnorm.pdf  used on input line 236.
 (pdftex.def)             Requested size: 199.16928pt x 107.53346pt.
  [8
 
@@ -869,107 +869,109 @@ pdfTeX warning: pdflatex.exe (file ./images/model_batchnorm.pdf): PDF inclusion:
 
 ] [10
 
+] [11
+
 ]
-<images/postag.pdf, id=142, 735.70856pt x 422.53859pt>
+<images/postag.pdf, id=155, 735.70856pt x 422.53859pt>
 File: images/postag.pdf Graphic file (type pdf)
 <use images/postag.pdf>
-Package pdftex.def Info: images/postag.pdf  used on input line 274.
+Package pdftex.def Info: images/postag.pdf  used on input line 296.
 (pdftex.def)             Requested size: 199.16928pt x 114.38351pt.
- [11
+ [12
 
  <./images/postag.pdf
 
 pdfTeX warning: pdflatex.exe (file ./images/postag.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<images/random_graph.pdf, id=162, 422.39493pt x 315.83257pt>
+<images/random_graph.pdf, id=176, 422.39493pt x 315.83257pt>
 File: images/random_graph.pdf Graphic file (type pdf)
 <use images/random_graph.pdf>
-Package pdftex.def Info: images/random_graph.pdf  used on input line 283.
+Package pdftex.def Info: images/random_graph.pdf  used on input line 305.
 (pdftex.def)             Requested size: 199.16928pt x 148.92323pt.
- [12
-
- <./images/random_graph.pdf>]
-<images/freeze_word2vec.pdf, id=203, 422.39493pt x 346.71104pt>
-File: images/freeze_word2vec.pdf Graphic file (type pdf)
-<use images/freeze_word2vec.pdf>
-Package pdftex.def Info: images/freeze_word2vec.pdf  used on input line 291.
-(pdftex.def)             Requested size: 199.16928pt x 163.48325pt.
  [13
 
+ <./images/random_graph.pdf>]
+<images/freeze_word2vec.pdf, id=217, 422.39493pt x 346.71104pt>
+File: images/freeze_word2vec.pdf Graphic file (type pdf)
+<use images/freeze_word2vec.pdf>
+Package pdftex.def Info: images/freeze_word2vec.pdf  used on input line 313.
+(pdftex.def)             Requested size: 199.16928pt x 163.48325pt.
+ [14
+
  <./images/freeze_word2vec.pdf>]
-<images/freeze_polyglot.pdf, id=255, 422.39493pt x 346.71104pt>
+<images/freeze_polyglot.pdf, id=268, 422.39493pt x 346.71104pt>
 File: images/freeze_polyglot.pdf Graphic file (type pdf)
 <use images/freeze_polyglot.pdf>
-Package pdftex.def Info: images/freeze_polyglot.pdf  used on input line 304.
+Package pdftex.def Info: images/freeze_polyglot.pdf  used on input line 326.
 (pdftex.def)             Requested size: 147.49782pt x 121.07028pt.
-<images/freeze_dict2vec.pdf, id=256, 416.0117pt x 346.71104pt>
+<images/freeze_dict2vec.pdf, id=269, 416.0117pt x 346.71104pt>
 File: images/freeze_dict2vec.pdf Graphic file (type pdf)
 <use images/freeze_dict2vec.pdf>
-Package pdftex.def Info: images/freeze_dict2vec.pdf  used on input line 304.
+Package pdftex.def Info: images/freeze_dict2vec.pdf  used on input line 326.
 (pdftex.def)             Requested size: 147.49782pt x 122.9272pt.
- [14
+ [15
 
  <./images/freeze_polyglot.pdf> <./images/freeze_dict2vec.pdf
 
 pdfTeX warning: pdflatex.exe (file ./images/freeze_dict2vec.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<images/continuous_word2vec.pdf, id=349, 422.39493pt x 346.77707pt>
+<images/continuous_word2vec.pdf, id=362, 422.39493pt x 346.77707pt>
 File: images/continuous_word2vec.pdf Graphic file (type pdf)
 <use images/continuous_word2vec.pdf>
-Package pdftex.def Info: images/continuous_word2vec.pdf  used on input line 313.
+Package pdftex.def Info: images/continuous_word2vec.pdf  used on input line 335.
 (pdftex.def)             Requested size: 199.16928pt x 163.51437pt.
- [15
+ [16
 
  <./images/continuous_word2vec.pdf>]
-<images/continuous_polyglot.pdf, id=400, 422.39493pt x 346.77707pt>
+<images/continuous_polyglot.pdf, id=413, 422.39493pt x 346.77707pt>
 File: images/continuous_polyglot.pdf Graphic file (type pdf)
 <use images/continuous_polyglot.pdf>
-Package pdftex.def Info: images/continuous_polyglot.pdf  used on input line 326.
+Package pdftex.def Info: images/continuous_polyglot.pdf  used on input line 348.
 (pdftex.def)             Requested size: 147.49782pt x 121.09334pt.
-<images/continuous_dict2vec.pdf, id=401, 416.0117pt x 346.77707pt>
+<images/continuous_dict2vec.pdf, id=414, 416.0117pt x 346.77707pt>
 File: images/continuous_dict2vec.pdf Graphic file (type pdf)
 <use images/continuous_dict2vec.pdf>
-Package pdftex.def Info: images/continuous_dict2vec.pdf  used on input line 326.
+Package pdftex.def Info: images/continuous_dict2vec.pdf  used on input line 348.
 (pdftex.def)             Requested size: 147.49782pt x 122.95062pt.
- [16
+ [17
 
  <./images/continuous_polyglot.pdf> <./images/continuous_dict2vec.pdf
 
 pdfTeX warning: pdflatex.exe (file ./images/continuous_dict2vec.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<images/train_embed.pdf, id=499, 455.0463pt x 343.16193pt>
+<images/train_embed.pdf, id=512, 455.0463pt x 343.16193pt>
 File: images/train_embed.pdf Graphic file (type pdf)
 <use images/train_embed.pdf>
-Package pdftex.def Info: images/train_embed.pdf  used on input line 334.
+Package pdftex.def Info: images/train_embed.pdf  used on input line 356.
 (pdftex.def)             Requested size: 199.16928pt x 150.20103pt.
- [17
+ [18
 
- <./images/train_embed.pdf>] [18
-
-] [19
+ <./images/train_embed.pdf>] [19
 
 ] [20
 
+] [21
+
 ]
-Overfull \hbox (10.15518pt too wide) in paragraph at lines 456--456
+Overfull \hbox (10.15518pt too wide) in paragraph at lines 478--478
  [] 
  []
 
 
-Overfull \vbox (5.70024pt too high) detected at line 456
+Overfull \vbox (5.70024pt too high) detected at line 478
  []
 
-[21
-
-] [22
+[22
 
 ] [23
 
 ] [24
 
-] (./bibli1.tex [25
+] [25
 
- <e:/texlive/texlive/2019/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]) (./bibli2.tex [26
+] (./bibli1.tex [26
+
+ <e:/texlive/texlive/2019/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]) (./bibli2.tex [27
 
 ])
 \tf@nav=\write6
@@ -981,31 +983,31 @@ Overfull \vbox (5.70024pt too high) detected at line 456
 \tf@snm=\write8
 \openout8 = `presentation_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 502.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 502.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 524.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 524.
  (./presentation_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 502.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 502.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 524.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 524.
 Package rerunfilecheck Info: File `presentation_1.out' has not changed.
-(rerunfilecheck)             Checksum: D01139D5FDD2C74C955F758E412AC9D0;281.
+(rerunfilecheck)             Checksum: 9A509A76649C86A11D34AB85F627E6E9;344.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 22945 strings out of 492609
- 451509 string characters out of 6129026
- 534267 words of memory out of 5000000
- 26285 multiletter control sequences out of 15000+600000
+ 22960 strings out of 492609
+ 451715 string characters out of 6129026
+ 534352 words of memory out of 5000000
+ 26295 multiletter control sequences out of 15000+600000
  18507 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,80p,814b,738s stack positions out of 5000i,500n,10000p,200000b,80000s
 <e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb><e:/texlive/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on presentation_1.pdf (26 pages, 427536 bytes).
+Output written on presentation_1.pdf (27 pages, 430195 bytes).
 PDF statistics:
- 673 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 689 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 

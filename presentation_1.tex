@@ -133,10 +133,10 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
     \textbf{Why OOV handling is needed?}\\~\\
 
     \begin{itemize}
-        \item Word embedding needs large corpus
+        \item Word embedding prefers large corpus \cite{size2018kutuzov}
         \item Language itself is creative and changing overtime
         \cite{forrester2008abrief, speech2009Jurafsky};
-        \item Some word embedding have no OOV handling method
+        \item Some word embedding has no OOV handling method
         \cite{polyglot2013alrfo, dict2vect2017tissier, efficient2013mikolov}; and 
         \item Improvements should be able to be achieved over using
         random or unknown embedding for OOV.
@@ -162,9 +162,9 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
     \begin{itemize}
         \item \textsc{Mimick} used the last hidden state of bi-LSTM to
         infer OOV embedding \cite{mimicking2017Pinter};
-        \item By default, bi-LSTM has cell gate that could drop
-        previous information if there is a trigger from the input or
-        previous hidden state; and 
+        \item By default, bi-LSTM has cell gate that could split
+        the graph of the hidden unit when the input or previous state
+        triggers it
         \item The last hidden state only encoded the recent sequence
         if there is several subsequence that is important.
     \end{itemize}
@@ -225,28 +225,50 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
     \end{figure}
     \begin{itemize}
         \item $[2, 3, 4, 5, 6, 7]$-grams were used as the feature extractor
-        \item For each grams $\{20, 50, 100\}$ number of features were used
         \item ReLU activation function was used before the
         max-over-time pooling
-        \item Using $50\%$ dropout
+        \item The predicted embedding was used for calculating the
+        deviation from the original embedding $e_i$ by using MSE
+        \begin{align*}
+            \mathcal{L} = \Vert e_i - \tilde{e}_i \Vert^2_2
+        \end{align*}
     \end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}{CNN N-grams for OOV handling}
+
+    \begin{table}[]
+        \centering
+        \caption{OOV Handling Model Parameters}
+        \label{tab:hyperparameter}
+        \begin{tabular}{@{}lcc@{}}
+            \toprule
+            \textbf{Hyperparameter} & \multicolumn{1}{c}{\textbf{\textsc{Mimick}}} & \multicolumn{1}{c}{\textbf{CNN}} \\ \midrule
+            Train-Val split & \multicolumn{2}{c}{$80\%$; $20\%$}\\
+            Batch size & \multicolumn{2}{c}{64} \\
+            Epoch & \multicolumn{2}{c}{100} \\
+            Momentum & \multicolumn{2}{c}{0.5} \\
+            Learning Rate ($\eta$) & [0.01; 0.1] & 0.1 \\
+            Dropout & 0 & 0.5 \\
+            Num features & [50; 100; 200; 300] & [20; 50; 100; 150] \\ \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------
+
+\section{CNN N-grams for OOV handling}
+\begin{frame}{CNN N-grams for OOV handling}
+    Both model trained with three word embedding:
     \begin{itemize}
-        \item The predicted embedding was used for calculating the
-        deviation from the original embedding $e_i$ by using MSE
-        \begin{align*}
-            \mathcal{L} = \Vert e_i - \tilde{e}_i \Vert^2_2
-        \end{align*}
-        \item The kernel and other parameters were updated with
-        learning rate $\eta = 0.1$
+        \item Polyglot ($\sim$100k words)
+        \item Word2vec first 40k with reduction ($\sim$35k words). If the word
+        contain underscore ``\_'' or ``http'' then it will be
+        removed
+        \item Dict2vec 100 dimension ($\sim$50k words)
     \end{itemize}
 \end{frame}
-
-%------------------------------------------------
 %----------------------------------------------------------------------------------------
 %	Evaluation on Downstream Tasks
 %----------------------------------------------------------------------------------------
@@ -470,9 +492,9 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \begin{itemize}
             \item \textsc{Mimick} has higher accuracy in
             POS-tagging:\\
-            the pre-trained embedding \& the OOV handling model non-trainable
+            when the pre-trained embedding \& the OOV handling model non-trainable
             \item CNN N-grams has higher accuracy in POS-tagging:\\
-            both pre-trained embedding and the OOV handling model trainable
+            when both pre-trained embedding and the OOV handling model trainable
             \item Despite that \textsc{Mimick} preforms better
             \textit{out-of-the-box}, this was not the case for word
             similarity task
