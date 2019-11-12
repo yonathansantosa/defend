@@ -162,11 +162,12 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
     \begin{itemize}
         \item \textsc{Mimick} used the last hidden state of bi-LSTM to
         infer OOV embedding \cite{mimicking2017Pinter};
-        \item By default, bi-LSTM has cell gate that could split
+        \item By default, LSTM has a cell gate that could split
         the graph of the hidden unit when the input or previous state
         triggers it
         \item The last hidden state only encoded the recent sequence
-        if there is several subsequence that is important.
+        \item There is evidence that CNN can performs better than RNN
+        and LSTM in sequence modeling \cite{empirical2018shaujie}
     \end{itemize}
 \end{frame}
 
@@ -184,11 +185,12 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \item Similar with \textsc{Mimick}, this problem is tackled
         from quasi-generative perspective
         \item Instead of using bi-LSTM, CNN that based on n-grams can
-        be used to learn character sequence \cite{convolutional2014kim}.
-        \item Given a kernel $K$, an input that has similar features
+        be used to learn character sequence
+        \cite{convolutional2014kim}.
+        \item CNN N-grams can process different length sequence using
+        max-over-time pooling.
+        \item For each kernel $K$, an input that has similar features
         to the kernel can still gives a high response.
-        \item The fully-connected can be used to learn the embedding
-        from the max-over-time pooled features
     \end{itemize}
 \end{frame}
 
@@ -196,6 +198,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
 %----------------------------------------------------------------------------------------
 %	CNN N-grams for OOV handling
 %----------------------------------------------------------------------------------------
+\section{CNN N-grams for OOV handling}
 \begin{frame}{CNN N-grams for OOV handling}
     \begin{itemize}
         \item Given a word and its embedding $(w_i, e_i)$
@@ -209,14 +212,12 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \begin{align*}
             OOV_{model}(w_i) = \tilde{e}_i
         \end{align*}
-        \item The original word embedding were randomly split into $80\%:20\%$
-        for train and validation split.
     \end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
-\section{CNN N-grams for OOV handling}
+
 \begin{frame}{CNN N-grams for OOV handling}
     \begin{figure}[H]
         \centering
@@ -227,14 +228,29 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \item $[2, 3, 4, 5, 6, 7]$-grams were used as the feature extractor
         \item ReLU activation function was used before the
         max-over-time pooling
-        \item The predicted embedding was used for calculating the
-        deviation from the original embedding $e_i$ by using MSE
-        \begin{align*}
-            \mathcal{L} = \Vert e_i - \tilde{e}_i \Vert^2_2
-        \end{align*}
     \end{itemize}
 \end{frame}
 
+%------------------------------------------------
+
+\begin{frame}{CNN N-grams for OOV handling}
+    \begin{itemize}
+        \item \textit{Hardtanh} is used for predicting embedding
+        \item The predicted embedding was used for calculating the
+        deviation from the original embedding $e_i$ by using MSE
+        \begin{align*}
+            \mathcal{L} = \frac{1}{2}\Vert e_i - \tilde{e}_i \Vert^2_2
+        \end{align*}
+    \end{itemize}
+    Both model trained with three word embedding:
+    \begin{itemize}
+        \item Polyglot ($\sim$100k words)
+        \item Word2vec first 40k with reduction ($\sim$35k words). If the word
+        contain underscore ``\_'' or ``http'' then it will be
+        removed
+        \item Dict2vec 100 dimension ($\sim$50k words)
+    \end{itemize}
+\end{frame}
 %------------------------------------------------
 
 \begin{frame}{CNN N-grams for OOV handling}
@@ -256,19 +272,6 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \end{tabular}
     \end{table}
 \end{frame}
-%------------------------------------------------
-
-\section{CNN N-grams for OOV handling}
-\begin{frame}{CNN N-grams for OOV handling}
-    Both model trained with three word embedding:
-    \begin{itemize}
-        \item Polyglot ($\sim$100k words)
-        \item Word2vec first 40k with reduction ($\sim$35k words). If the word
-        contain underscore ``\_'' or ``http'' then it will be
-        removed
-        \item Dict2vec 100 dimension ($\sim$50k words)
-    \end{itemize}
-\end{frame}
 %----------------------------------------------------------------------------------------
 %	Evaluation on Downstream Tasks
 %----------------------------------------------------------------------------------------
@@ -277,26 +280,26 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
     \textbf{Part-of-Speech Tagging}
     \begin{itemize}
         \item Using brown POStagging datasets from NLTK\footnote{Available at \url{https://www.nltk.org/}}
-        \item Following POS-tagger model from Wang et al. (2015) \cite{finding2015ling}
+        \item Following POS-tagger model from Ling et al. (2015) \cite{finding2015ling}
         \item Sentence length limited to 5 words
-        \item Longer sentences are randomly sliced into 5 words and
-        shorter sentences are padded to make it 5 words long
+        \item There are 3 different setup for POS-tagger: Freeze,
+        Continuous, Continuous with Trainable Embedding
+        \item LogSoftmax is used for classifying the tags
     \end{itemize}
 \end{frame}
-
 %------------------------------------------------
 
 \begin{frame}{Evaluation on Downstream Tasks}
     \textbf{Part-of-Speech Tagging}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=70mm]{images/postag}
+        \includegraphics[width=90mm]{images/postag}
         \caption{POS-tagger Model}
     \end{figure}
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Evaluation on Downstream Tasks}
-    \textbf{Part-of-Speech Tagging Result}
+    \textbf{Part-of-Speech Tagging Result Random}
     \begin{figure}[H]
         \centering
         \includegraphics[width=70mm]{images/random_graph}
@@ -305,7 +308,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Evaluation on Downstream Tasks}
-    \textbf{Part-of-Speech Tagging Result}
+    \textbf{Part-of-Speech Tagging Result Freeze}
     \begin{figure}[H]
         \centering
         \includegraphics[width=70mm]{images/freeze_word2vec}
@@ -313,7 +316,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Evaluation on Downstream Tasks}
-    \textbf{Part-of-Speech Tagging Result}
+    \textbf{Part-of-Speech Tagging Result Freeze}
     \begin{figure}[H]
         \centering
         \begin{minipage}{.48\textwidth}
@@ -327,7 +330,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
 %------------------------------------------------
 
 \begin{frame}{Evaluation on Downstream Tasks}
-    \textbf{Part-of-Speech Tagging Result}
+    \textbf{Part-of-Speech Tagging Result Continuous}
     \begin{figure}[H]
         \centering
         \includegraphics[width=70mm]{images/continuous_word2vec}
@@ -335,7 +338,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Evaluation on Downstream Tasks}
-    \textbf{Part-of-Speech Tagging Result}
+    \textbf{Part-of-Speech Tagging Result Continuous}
     \begin{figure}[H]
         \centering
         \begin{minipage}{.48\textwidth}
@@ -348,7 +351,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Evaluation on Downstream Tasks}
-    \textbf{Part-of-Speech Tagging Result}
+    \textbf{Part-of-Speech Tagging Result Continuous with Trainable Embedding}
     \begin{figure}[H]
         \centering
         \includegraphics[width=70mm]{images/train_embed}
@@ -361,7 +364,7 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \item Using 12 different datasets to increase the data test size
         \item Only OOV embedding was inferred from the OOV handling model
         \item The cosine distance of a given pairs was calculated and
-        compared with the dataset with Spearman's correlation
+        compared with the dataset with Spearman's rank correlation
         coefficient.
     \end{itemize}
 \end{frame}
@@ -492,11 +495,13 @@ Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn % Your institution for the ti
         \begin{itemize}
             \item \textsc{Mimick} has higher accuracy in
             POS-tagging:\\
-            when the pre-trained embedding \& the OOV handling model non-trainable
+            when the pre-trained embedding \& the OOV handling model
+            are non-trainable (\textit{out-of-the-box})
             \item CNN N-grams has higher accuracy in POS-tagging:\\
-            when both pre-trained embedding and the OOV handling model trainable
+            when both pre-trained embedding and the OOV handling model
+            are trainable
             \item Despite that \textsc{Mimick} preforms better
-            \textit{out-of-the-box}, this was not the case for word
+            \textit{out-of-the-box} for POS-tagging, this was not the case for word
             similarity task
         \end{itemize}
     \end{itemize}
